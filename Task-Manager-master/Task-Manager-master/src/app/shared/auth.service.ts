@@ -13,9 +13,17 @@ import { asyncScheduler, scheduled } from 'rxjs';
   providedIn: 'root',
 })
 export class AuthService {
+  // Firebase Authentication servisi enjeksiyon yoluyla alınır
   readonly auth: Auth = inject(Auth);
+
+  // Router servisi sayfa yönlendirmeleri için kullanılır
   router = inject(Router);
 
+  /**
+   * Yeni bir kullanıcıyı email ve şifre ile Firebase üzerinden kayıt eder.
+   * @param authData Kullanıcının email ve şifresini içeren nesne
+   * @returns Observable şeklinde kayıt işlemi
+   */
   registerUser(authData: AuthData) {
     return scheduled(
       createUserWithEmailAndPassword(
@@ -27,6 +35,11 @@ export class AuthService {
     );
   }
 
+  /**
+   * Var olan kullanıcıyı email ve şifre ile giriş yapmasını sağlar.
+   * @param authData Kullanıcının email ve şifresini içeren nesne
+   * @returns Observable şeklinde giriş işlemi
+   */
   login(authData: AuthData) {
     return scheduled(
       signInWithEmailAndPassword(this.auth, authData.email, authData.password),
@@ -34,9 +47,17 @@ export class AuthService {
     );
   }
 
+  /**
+   * Kullanıcının oturumunu sonlandırır ve login sayfasına yönlendirir.
+   */
   logout() {
+    // Tarayıcı yerel deposundan kullanıcıyı sil
     localStorage.removeItem('user');
+
+    // Firebase oturumunu kapat
     signOut(this.auth);
+
+    // Kullanıcıyı giriş sayfasına yönlendir
     this.router.navigate(['/login']);
   }
 }
