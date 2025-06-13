@@ -1,31 +1,35 @@
+/* E-posta ve şifre alanlarını kapsayan material form alanının genişliği ve iç boşluğu ayarlanıyor */
 mat-form-field {
-  width: 300px;
-  gap: 5px;
+  width: 300px;       /* Genişlik: 300 piksel */
+  gap: 5px;           /* İç öğeler arası boşluk: 5 piksel */
 }
 
+/* Login formunun dıştan boşluğu ayarlanıyor */
 .login-form {
-  padding: 30px;
+  padding: 30px;      /* Tüm kenarlardan 30 piksel iç boşluk */
 }
 
+/* Form etiketinin iç boşluğu */
 form {
-  padding: 10px;
+  padding: 10px;      /* Tüm kenarlardan 10 piksel iç boşluk */
 }
 
+/* 'Not a member?' kısmının stil ayarları */
 .not-a-member {
-  line-height: 50px;
+  line-height: 50px;  /* Satır yüksekliği: 50 piksel */
 
   .sign-up {
-    font-weight: bold;
-    color: #000;
-    cursor: pointer;
+    font-weight: bold;  /* Kalın yazı tipi */
+    color: #000;        /* Siyah renk */
+    cursor: pointer;    /* Üzerine gelindiğinde tıklanabilir el simgesi */
   }
 }
 
+/* 'Sign In' başlığının yazı stil özellikleri */
 .sign-in {
-  font-size: 40px;
-  font-style: normal;
-  font-weight: 700;
-  line-height: 80px;
-  letter-spacing: 0;
+  font-size: 40px;     /* Yazı boyutu: 40 piksel */
+  font-style: normal;  /* Normal yazı stili */
+  font-weight: 700;    /* Kalınlık: 700 (bold) */
+  line-height: 80px;   /* Satır yüksekliği: 80 piksel */
+  letter-spacing: 0;   /* Harfler arası boşluk: 0 */
 }
-
