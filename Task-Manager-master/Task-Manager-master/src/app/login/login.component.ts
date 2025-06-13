@@ -18,44 +18,51 @@ import { AsyncPipe } from '@angular/common';
 
 @Component({
   selector: 'app-login',
-  standalone: true,
+  standalone: true,  // Angular 14+ bağımsız bileşen tanımı
   imports: [
-    MatButtonModule,
-    MatFormFieldModule,
-    MatIconModule,
-    MatInputModule,
-    MatProgressSpinnerModule,
-    ReactiveFormsModule,
-    AsyncPipe
+    MatButtonModule,           // Material buton modülü
+    MatFormFieldModule,        // Material form alanı modülü
+    MatIconModule,             // Material ikon modülü
+    MatInputModule,            // Material input modülü
+    MatProgressSpinnerModule,  // Material spinner modülü
+    ReactiveFormsModule,       // Reactive form modülü
+    AsyncPipe                  // Async pipe desteği
   ],
   templateUrl: './login.component.html',
   styleUrl: './login.component.scss',
 })
 export class LoginComponent implements OnInit {
-  userLoginForm: FormGroup;
-  hide = true;
-  isLoadingResults;
+  userLoginForm: FormGroup;         // Kullanıcı giriş formu
+  hide = true;                      // Şifre gizleme/ gösterme durumu
+  isLoadingResults;                 // Spinner göstergesini kontrol eden Observable
+
+  // Servislerin Angular 14+ inject() fonksiyonu ile alınması
   authService = inject(AuthService);
   fb = inject(FormBuilder);
   router = inject(Router);
   spinnerService = inject(SpinnerService);
   snackbarService = inject(SnackbarService);
 
+  // Bileşen başlatıldığında form kontrolü ve spinner durumu hazırlanır
   ngOnInit(): void {
     this.userLoginForm = this.fb.group({
-      email: ['', [Validators.required, Validators.email]],
-      password: ['', [Validators.required]],
+      email: ['', [Validators.required, Validators.email]],  // Email zorunlu ve email formatında olmalı
+      password: ['', [Validators.required]],                  // Şifre zorunlu
     });
 
+    // Spinner servisinden loading durumunu Observable olarak alıyoruz
     this.isLoadingResults = this.spinnerService.showSpinner$;
   }
 
+  // Form kontrollerine kolay erişim için getter
   get controls() {
     return this.userLoginForm.controls;
   }
 
+  // Giriş işlemi yapılır
   login(formData: FormGroup) {
-    this.spinnerService.showSpinner(true);
+    this.spinnerService.showSpinner(true);  // Spinner göster
+
     this.authService
       .login({
         email: formData.value.email,
@@ -63,32 +70,34 @@ export class LoginComponent implements OnInit {
       })
       .subscribe({
         next: (response) => {
-          this.spinnerService.showSpinner(false);
-          this.router.navigate(['/todo-list']);
+          this.spinnerService.showSpinner(false);    // Spinner gizle
+          this.router.navigate(['/todo-list']);      // Başarılı giriş sonrası yönlendir
           localStorage.setItem(
             'user',
-            JSON.stringify(response.user.uid)
+            JSON.stringify(response.user.uid)         // Kullanıcı ID'sini localStorage'a kaydet
           );
         },
         error: (error) => {
+          this.spinnerService.showSpinner(false);    // Spinner gizle
           if (
             error.message ===
             'Firebase: Error (auth/invalid-login-credentials).'
           ) {
-            this.spinnerService.showSpinner(false);
+            // Geçersiz giriş bilgisi mesajı göster
             this.snackbarService.showSnackbar(
               'Invalid login credentials',
               null,
               3000
             );
           } else {
-            this.spinnerService.showSpinner(false);
+            // Diğer hatalar için hata mesajını göster
             this.snackbarService.showSnackbar(error.message, null, 3000);
           }
         },
       });
   }
 
+  // Kayıt sayfasına yönlendirme fonksiyonu
   navigateToSignUp() {
     this.router.navigate(['/signup']);
   }
