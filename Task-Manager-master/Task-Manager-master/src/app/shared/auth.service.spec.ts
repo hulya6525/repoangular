@@ -10,57 +10,71 @@ describe('AuthService', () => {
   let routerSpy: jasmine.SpyObj<Router>;
 
   beforeEach(() => {
+    // Router servisinin bir sahte (mock) nesnesini oluştur
     routerSpy = jasmine.createSpyObj('Router', ['navigate']);
+
+    // Test modülünü yapılandır: Firebase ve Auth servisi sağlanıyor
     TestBed.configureTestingModule({
       providers: [
+        // Firebase uygulamasını başlatmak için yapılandırma
         provideFirebaseApp(() =>
           initializeApp({
-            projectId: 'to-do-app-3569d',
-            appId: '1:665738202763:web:c08911a6f36c6c3bbbce8e',
-            storageBucket: 'to-do-app-3569d.appspot.com',
-            apiKey: 'AIzaSyDmWSsxJJAlzt60_hMRcT9JGGm4EiWqkbw',
-            authDomain: 'to-do-app-3569d.firebaseapp.com',
-            messagingSenderId: '665738202763',
-            measurementId: 'G-0B32KQX4NF',
+            apiKey: "AIzaSyBEaidVaZ60d39kKIoUZ-5Ky8m78vhg2Hw",
+            authDomain: "taskmanager-ff578.firebaseapp.com",
+            projectId: "taskmanager-ff578",
+            storageBucket: "taskmanager-ff578.firebasestorage.app",
+            messagingSenderId: "170552619280",
+            appId: "1:170552619280:web:957820346b422b9e4eb595"
           })
         ),
+        // Firebase Authentication modülünü sağla
         provideAuth(() => getAuth()),
       ],
     });
+
+    // Test edilecek AuthService örneğini oluştur
     service = TestBed.inject(AuthService);
   });
 
+  // Servisin başarılı şekilde oluşturulup oluşturulmadığını test et
   it('should be created', () => {
     expect(service).toBeTruthy();
   });
 
-  // it('should register a new user successfully', async () => {
-  //   const authData: AuthData = {
-  //     email: 'test@example.com',
-  //     password: 'test123',
-  //   };
+  // Aşağıdaki testler yorum satırına alınmış. Geliştirildikten sonra kullanılabilir:
 
-  //   await service.registerUser(authData);
+  /*
+  // Yeni kullanıcı başarılı şekilde kayıt olduğunda logout metodunun çağrıldığını test et
+  it('should register a new user successfully', async () => {
+    const authData: AuthData = {
+      email: 'test@example.com',
+      password: 'test123',
+    };
 
-  //   expect(service.logout).toHaveBeenCalled();
-  // });
+    await service.registerUser(authData);
 
-  // it('should log in a user successfully', async () => {
-  //   const authData: AuthData = {
-  //     email: 'test@example.com',
-  //     password: 'test123',
-  //   };
-  //   await service.login(authData);
+    expect(service.logout).toHaveBeenCalled();
+  });
 
-  //   expect(routerSpy.navigate).toHaveBeenCalledWith(['/todo-list']);
-  // });
+  // Kullanıcı başarılı şekilde giriş yaptığında yönlendirme yapılıp yapılmadığını test et
+  it('should log in a user successfully', async () => {
+    const authData: AuthData = {
+      email: 'test@example.com',
+      password: 'test123',
+    };
+    await service.login(authData);
 
-  // it('should handle invalid login credentials', async () => {
-  //   const authData: AuthData = {
-  //     email: 'invalid@example.com',
-  //     password: 'invalid123',
-  //   };
+    expect(routerSpy.navigate).toHaveBeenCalledWith(['/todo-list']);
+  });
 
-  //   await service.login(authData);
-  // });
+  // Geçersiz kullanıcı bilgileriyle giriş yapıldığında hata yakalanıp yakalanmadığını test et
+  it('should handle invalid login credentials', async () => {
+    const authData: AuthData = {
+      email: 'invalid@example.com',
+      password: 'invalid123',
+    };
+
+    await service.login(authData);
+  });
+  */
 });
