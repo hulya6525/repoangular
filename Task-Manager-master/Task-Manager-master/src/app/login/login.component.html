@@ -1,11 +1,19 @@
+<!-- Yükleniyor animasyonu gösteriliyor -->
 @if (isLoadingResults | async) {
-    <div class="loading-shade">
-      <mat-spinner></mat-spinner>
-    </div>
+  <div class="loading-shade">
+    <mat-spinner></mat-spinner>
+  </div>
 }
+
+<!-- Giriş formu bölümü -->
 <section class="login-form">
+  <!-- Başlık -->
   <span class="sign-in flex-col items-center"> Sign In </span>
+
+  <!-- Angular Reactive Form tanımı -->
   <form [formGroup]="userLoginForm" class="flex-col items-center">
+    
+    <!-- E-posta girişi için form alanı -->
     <mat-form-field>
       <input
         matInput
@@ -14,25 +22,32 @@
         formControlName="email"
         required
       />
+      <!-- E-posta ikon butonu (sadece ikon, tıklanamaz) -->
       <button matPrefix mat-icon-button class="icon-button" disabled="true">
         <mat-icon>mail_outline</mat-icon>
       </button>
+
+      <!-- Geçersiz e-posta durumunda hata mesajı -->
       @if(controls['email'].invalid && controls['email'].touched){
         <mat-error>Email required or invalid.</mat-error>
       }
     </mat-form-field>
 
+    <!-- Şifre girişi için form alanı -->
     <mat-form-field>
       <input
         matInput
-        [type]="hide ? 'password' : 'text'"
+        [type]="hide ? 'password' : 'text'" <!-- Şifre görünürlüğünü kontrol eder -->
         formControlName="password"
         required
         placeholder="Your password"
       />
+      <!-- Kilit ikon butonu (sadece ikon, tıklanamaz) -->
       <button matPrefix mat-icon-button class="icon-button" disabled="true">
         <mat-icon>lock</mat-icon>
       </button>
+
+      <!-- Şifreyi göster/gizle butonu -->
       <button
         mat-icon-button
         matSuffix
@@ -42,23 +57,28 @@
       >
         <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
       </button>
+
+      <!-- Geçersiz şifre durumunda hata mesajı -->
       @if(controls['password'].invalid && controls['password'].touched) {
         <mat-error>Password required or invalid.</mat-error>
       }
     </mat-form-field>
 
+    <!-- Giriş yapma butonu -->
     <button
       mat-raised-button
       color="primary"
       type="submit"
       class="login"
-      [disabled]="userLoginForm.invalid"
+      [disabled]="userLoginForm.invalid" <!-- Form geçersizse buton devre dışı -->
       (click)="login(userLoginForm)"
     >
       Sign In
     </button>
-    <span class="not-a-member"
-      >Not a member?
+
+    <!-- Üye olmayan kullanıcılar için yönlendirme -->
+    <span class="not-a-member">
+      Not a member?
       <span class="sign-up" (click)="navigateToSignUp()">Sign Up</span>
     </span>
   </form>
