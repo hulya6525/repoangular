@@ -15,7 +15,8 @@ URL:  https://console.firebase.google.com/project/taskmanager-ff578/overview
 
 
 # Geliştirme Sunucusu
-Geliştirme sunucusunu çalıştırmak için ng serve komutunu kullanın. http://localhost:4200/ adresine gidin. Kaynak dosyalarda herhangi bir değişiklik yaptığınızda uygulama otomatik olarak yeniden yüklenecektir.
+Geliştirme sunucusunu çalıştırmak için ng serve komutunu kullanın.: https://taskmanager-ff578.web.app
+ adresine gidin. Kaynak dosyalarda herhangi bir değişiklik yaptığınızda uygulama otomatik olarak yeniden yüklenecektir.
 
 ## Kod İskeleti Oluşturma (Code Scaffolding)
 Yeni bir bileşen (component) oluşturmak için ng generate component bileşen-adı komutunu çalıştırın.
