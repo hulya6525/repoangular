@@ -1,28 +1,27 @@
-# Task Manager
+# Görev Yöneticisi (Task Manager)
+Bu proje, Angular CLI sürüm 17.0.9 kullanılarak oluşturulmuştur.
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.0.9.
+# Çalıştırma Adımları
+1.Terminali açın ve 'npm install' komutunu yazın.
 
-## Running Steps
+2.'ng serve' komutunu yazın ve uygulamanın çalışmasını bekleyin.
 
-1. Open the terminal and type 'npm install'.
-2. Type 'ng serve' and wait for the application to run.
-3. Open the application in the browser.
-4. Login with the credentials. If you don't have an account create using the sign-up button.
+3.Tarayıcıda uygulamayı açın.
 
-## Deployment on Firebase
-URL: https://firebase.google.com/docs/hosting/frameworks/angular
+4.Giriş yapın. Eğer bir hesabınız yoksa, "Kayıt Ol" butonunu kullanarak yeni bir hesap oluşturun.
 
-## Development server
+## Firebase Üzerinde Yayınlama
+URL:  https://console.firebase.google.com/project/taskmanager-ff578/overview
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
 
-## Code scaffolding
+# Geliştirme Sunucusu
+Geliştirme sunucusunu çalıştırmak için ng serve komutunu kullanın. http://localhost:4200/ adresine gidin. Kaynak dosyalarda herhangi bir değişiklik yaptığınızda uygulama otomatik olarak yeniden yüklenecektir.
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Kod İskeleti Oluşturma (Code Scaffolding)
+Yeni bir bileşen (component) oluşturmak için ng generate component bileşen-adı komutunu çalıştırın.
 
-## Build
-
-Run `ng build` to build the project. The build artefacts will be stored in the `dist/` directory.
+## Derleme (Build)
+Projeyi derlemek için ng build komutunu çalıştırın. Derleme çıktıları dist/ dizininde saklanacaktır.
 
 ## Running unit tests
 
@@ -32,6 +31,5 @@ Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.
 
 Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
 
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## Daha Fazla Yardım
+Angular CLI hakkında daha fazla bilgi almak için ng help komutunu kullanabilir veya Angular CLI Genel Bakış ve Komut Referansı sayfasını ziyaret edebilirsiniz.
