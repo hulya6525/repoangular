@@ -10,10 +10,6 @@ Bu proje, Angular CLI sürüm 17.0.9 kullanılarak oluşturulmuştur.
 
 4.Giriş yapın. Eğer bir hesabınız yoksa, "Kayıt Ol" butonunu kullanarak yeni bir hesap oluşturun.
 
-## Firebase Üzerinde Yayınlama
-URL:  https://console.firebase.google.com/project/taskmanager-ff578/overview
-
-
  # Yayınlanmış Uygulama
  Canlı uygulamayı Firebase üzerinde görmek için şu bağlantıyı kullanabilirsiniz:
 https://taskmanager-ff578.web.app
